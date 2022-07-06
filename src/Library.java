@@ -63,11 +63,11 @@ public class Library {
     System.out.println();
   }
 
-  public void addBook(int shelfID, Book newBook) {
+  public void addBook(int shelfID, Book newBook) throws FullBookShelfException {
     try {
       this.libShelves()[shelfID - 1].addBook(newBook);
     } catch (FullBookShelfException e) {
-      throw new RuntimeException(e);
+      throw new FullBookShelfException();
     }
   }
 

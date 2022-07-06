@@ -65,13 +65,7 @@ public class Main {
       libShelves[i] = new BookShelf(i + 1, new ArrayList<Book>());
     }
 
-    Library library = null;
-
-    try {
-      library = new Library("The Library", libShelves);
-    } catch (LibSizeException e1) {
-      System.out.println(e1.getMessage());
-    }
+    Library library = new Library("The Library", libShelves);
 
     Book book;
 
