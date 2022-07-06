@@ -23,6 +23,11 @@ public class Main {
 
     switch (choice) {
       case (SCIENCE):
+        System.out.println("Enter the book's name:");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter the amount of page the book has:");
+        int page = scanner.nextInt();
 
         // TODO: create new ScienceBook (and maybe get more details)
 
