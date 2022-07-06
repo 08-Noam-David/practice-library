@@ -13,47 +13,69 @@ public class BookShelf implements Comparable<BookShelf> {
   private ArrayList<Book> booksOnShelf;
 
   public BookShelf(int shelfID, ArrayList<Book> bookShelf) {
-    // TODO:
+    this.shelfId = shelfID;
+    this.booksOnShelf = bookShelf;
   }
 
   public int shelfId() {
-    // TODO:
+    return this.shelfId;
   }
 
   private ArrayList<Book> booksOnShelf() {
-    // TODO:
+    return this.booksOnShelf;
   }
 
   public void changeShelfId(int shelfId) {
-    // TODO:
+    this.shelfId = shelfId;
   }
 
   private void changeBooksOnShelf(ArrayList<Book> booksOnShelf) {
-    // TODO:
+    this.booksOnShelf = booksOnShelf;
   }
 
-  public void addBook(Book newBook) {
-    // TODO:
+  public void addBook(Book newBook) throws FullBookShelfException {
+    this.booksOnShelf.add(newBook);
+
+    if (this.booksOnShelf.size() > 5 || this.countPagesOnShelf() > 1_500) {
+      this.booksOnShelf.remove(newBook);
+      throw new FullBookShelfException();
+    }
   }
 
-  public void deleteBook(String bookName) {
-    // TODO:
+  public void deleteBook(String bookName) throws DeleteBookException {
+    boolean result = this.booksOnShelf.removeIf(book -> book.getName().equals(bookName));
+
+    if (!result) {
+      throw new DeleteBookException();
+    }
   }
 
   public int countBooks() {
-    // TODO:
+    return this.booksOnShelf.size();
   }
 
   public int countPagesOnShelf() {
-    // TODO:
+    int count = 0;
+
+    for (Book book : booksOnShelf) {
+      if (book instanceof MagazineBook) {
+        count += ((MagazineBook) book).actualPageCount();
+      } else {
+        count += book.getPages();
+      }
+    }
+
+    return count;
   }
 
   public void sort() {
-    // TODO:
+    Collections.sort(this.booksOnShelf);
   }
 
   public void print() {
-    // TODO:
+    for (Book book : this.booksOnShelf) {
+      System.out.println(book);
+    }
   }
 
   @Override

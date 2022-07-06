@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
@@ -8,14 +6,14 @@ public class Main {
   public static Book getBookFromUser() {
     Scanner scanner = new Scanner(System.in);
 
-    final int SCEINCE = 1;
+    final int SCIENCE = 1;
     final int MAGAZINE = 2;
     final int READING = 3;
 
     Book bookToReturn = null;
 
     System.out.println("What is the type of the book?");
-    System.out.println(SCEINCE + " - science book");
+    System.out.println(SCIENCE + " - science book");
     System.out.println(MAGAZINE + " - magazine");
     System.out.println(READING + " - reading");
 
@@ -24,7 +22,7 @@ public class Main {
     // TODO: Get book details
 
     switch (choice) {
-      case (SCEINCE):
+      case (SCIENCE):
 
         // TODO: create new ScienceBook (and maybe get more details)
 
@@ -62,16 +60,10 @@ public class Main {
     BookShelf[] libShelves = new BookShelf[Library.NUM_OF_SHELVES];
 
     for (int i = 0; i < Library.NUM_OF_SHELVES; i++) {
-      libShelves[i] = new BookShelf(i + 1, new ArrayList<Book>());
+      libShelves[i] = new BookShelf(i + 1, new ArrayList<>());
     }
 
-    Library library = null;
-
-    try {
-      library = new Library("The Library", libShelves);
-    } catch (LibSizeException e1) {
-      System.out.println(e1.getMessage());
-    }
+    Library library = new Library("The Library", libShelves);
 
     Book book;
 
@@ -88,9 +80,8 @@ public class Main {
     while (choice != EXIT_OPTION) {
 
       switch (choice) {
-        case (RETURN_BOOK_OPTION):
+        case (RETURN_BOOK_OPTION) -> {
           book = getBookFromUser();
-
           if (book == null) {
             System.out.println("try again");
           } else {
@@ -104,11 +95,9 @@ public class Main {
               System.out.println(e.getMessage());
             }
           }
-
-          break;
-        case (ADD_BOOK_OPTION):
-          book = GetBookFromUser();
-
+        }
+        case (ADD_BOOK_OPTION) -> {
+          book = getBookFromUser();
           if (book == null) {
             System.out.println("try again");
           } else {
@@ -120,19 +109,15 @@ public class Main {
               System.out.println(e.getMessage());
             }
           }
-
-          break;
-        case (LOST_BOOK_OPTION):
+        }
+        case (LOST_BOOK_OPTION) -> {
           System.out.println("Insert the shelf number of the lost book");
           int shelfID = Integer.parseInt(scanner.nextLine());
-
           System.out.println("Insert the name of the lost book");
           String bookName = scanner.nextLine();
-
           library.deleteBook(shelfID, bookName);
-
-          break;
-        case (REMOVE_BOOK_OPTION):
+        }
+        case (REMOVE_BOOK_OPTION) -> {
           System.out.println("Insert the name of the book");
           String name = scanner.nextLine();
 
@@ -142,20 +127,10 @@ public class Main {
           } catch (DeleteBookException e) {
             System.out.println(e.getMessage());
           }
-
-          break;
-        case (SORT_LIBRARY_OPTION):
-          library.sort();
-
-          break;
-        case (PRINT_LIBRARY):
-          library.print();
-
-          break;
-        default:
-          System.out.println("Wrong input");
-
-          break;
+        }
+        case (SORT_LIBRARY_OPTION) -> library.sort();
+        case (PRINT_LIBRARY) -> library.print();
+        default -> System.out.println("Wrong input");
       }
 
       System.out.println("What do you want to do?");
