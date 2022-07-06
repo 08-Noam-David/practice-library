@@ -18,4 +18,11 @@ public class ReadingBook extends Book {
   public int getPrice() {
     return this.getPages() * 3;
   }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "%s (reading) - %s, %dp., \u20AA%d",
+        this.getName(), this.author, this.getPages(), this.getPages());
+  }
 }
