@@ -21,6 +21,13 @@ public class MagazineBook extends Book {
     return this.price;
   }
 
+  @Override
+  public String toString() {
+    return String.format(
+        "%s (magazine) - %s, %dp., \u20AA%d",
+        this.getName(), this.author, this.actualPageCount(), this.price);
+  }
+
   public void setPrice(int price) {
     this.price = price;
   }

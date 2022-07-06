@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ScienceBook extends Book {
@@ -13,6 +14,14 @@ public class ScienceBook extends Book {
   @Override
   public int getPrice() {
     return this.price;
+  }
+
+  @Override
+  public String toString() {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    return String.format(
+        "%s (science) - pub. %s, %dp., \u20AA%d",
+        this.getName(), dateFormat.format(this.publishDate), this.getPages(), this.price);
   }
 
   public void setPrice(int price) {
