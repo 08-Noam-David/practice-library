@@ -92,9 +92,9 @@ public class Library {
     try {
       this.libShelves()[shelfID - 1].deleteBook(bookName);
 
-      return (true);
+      return true;
     } catch (DeleteBookException e) {
-      return (false);
+      return false;
     }
   }
 
