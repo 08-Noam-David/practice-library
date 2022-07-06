@@ -33,13 +33,8 @@ public class BookShelf implements Comparable<BookShelf> {
     this.booksOnShelf = booksOnShelf;
   }
 
-  public void addBook(Book newBook) throws FullBookShelfException {
+  public void addBook(Book newBook) {
     this.booksOnShelf.add(newBook);
-
-    if (this.booksOnShelf.size() > 5 || this.countPagesOnShelf() > 1_500) {
-      this.booksOnShelf.remove(newBook);
-      throw new FullBookShelfException();
-    }
   }
 
   public void deleteBook(String bookName) throws DeleteBookException {
