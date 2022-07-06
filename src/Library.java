@@ -75,7 +75,6 @@ public class Library {
     boolean isSecc = false;
 
     for (BookShelf current : this.libShelves()) {
-      // TODO: Implement
       try {
         current.addBook(newBook);
         isSecc = true;
@@ -84,7 +83,9 @@ public class Library {
       }
     }
 
-    throw new FullBookShelfException();
+    if (!isSecc) {
+      throw new FullBookShelfException();
+    }
   }
 
   public boolean deleteBook(int shelfID, String bookName) {
@@ -98,11 +99,9 @@ public class Library {
   }
 
   public void deleteBook(String bookName) throws DeleteBookException {
-    // TODO: Fix
     boolean isSecc = false;
 
     for (BookShelf current : this.libShelves()) {
-
       try {
         current.deleteBook(bookName);
         isSecc = true;
@@ -111,7 +110,9 @@ public class Library {
       }
     }
 
-    throw new DeleteBookException();
+    if (!isSecc) {
+      throw new DeleteBookException();
+    }
   }
 
   public void sort() {
