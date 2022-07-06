@@ -33,24 +33,43 @@ public class BookShelf implements Comparable<BookShelf> {
     this.booksOnShelf = booksOnShelf;
   }
 
-  public void addBook(Book newBook) {
-    // TODO:
+  public void addBook(Book newBook) throws FullBookShelfException {
+    this.booksOnShelf.add(newBook);
+
+    if (this.booksOnShelf.size() > 5 || this.countPagesOnShelf() > 1_500) {
+      this.booksOnShelf.remove(newBook);
+      throw new FullBookShelfException();
+    }
   }
 
-  public void deleteBook(String bookName) {
-    // TODO:
+  public void deleteBook(String bookName) throws DeleteBookException {
+    boolean result = this.booksOnShelf.removeIf(book -> book.getName().equals(bookName));
+
+    if (!result) {
+      throw new DeleteBookException();
+    }
   }
 
   public int countBooks() {
-    // TODO:
+    return this.booksOnShelf.size();
   }
 
   public int countPagesOnShelf() {
-    // TODO:
+    int count = 0;
+
+    for (Book book : booksOnShelf) {
+      if (book instanceof MagazineBook) {
+        count += ((MagazineBook) book).actualPageCount();
+      } else {
+        count += book.getPages();
+      }
+    }
+
+    return count;
   }
 
   public void sort() {
-    // TODO:
+    Collections.sort(this.booksOnShelf);
   }
 
   public void print() {

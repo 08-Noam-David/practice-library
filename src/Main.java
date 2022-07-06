@@ -107,7 +107,7 @@ public class Main {
 
           break;
         case (ADD_BOOK_OPTION):
-          book = GetBookFromUser();
+          book = getBookFromUser();
 
           if (book == null) {
             System.out.println("try again");

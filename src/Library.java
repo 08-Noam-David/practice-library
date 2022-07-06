@@ -64,19 +64,27 @@ public class Library {
   }
 
   public void addBook(int shelfID, Book newBook) {
-    this.libShelves()[shelfID - 1].addBook(newBook);
+    try {
+      this.libShelves()[shelfID - 1].addBook(newBook);
+    } catch (FullBookShelfException e) {
+      throw new RuntimeException(e);
+    }
   }
 
-  public void addBook(Book newBook) {
+  public void addBook(Book newBook) throws FullBookShelfException {
     boolean isSecc = false;
 
     for (BookShelf current : this.libShelves()) {
-
-      current.addBook(newBook);
-      isSecc = true;
-
-      break;
+      // TODO: Implement
+      try {
+        current.addBook(newBook);
+        isSecc = true;
+        break;
+      } catch (FullBookShelfException ignored) {
+      }
     }
+
+    throw new FullBookShelfException();
   }
 
   public boolean deleteBook(int shelfID, String bookName) {
@@ -89,16 +97,21 @@ public class Library {
     }
   }
 
-  public void deleteBook(String bookName) {
+  public void deleteBook(String bookName) throws DeleteBookException {
+    // TODO: Fix
     boolean isSecc = false;
 
     for (BookShelf current : this.libShelves()) {
 
-      current.deleteBook(bookName);
-      isSecc = true;
-
-      break;
+      try {
+        current.deleteBook(bookName);
+        isSecc = true;
+        break;
+      } catch (DeleteBookException ignored) {
+      }
     }
+
+    throw new DeleteBookException();
   }
 
   public void sort() {

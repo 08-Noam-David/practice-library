@@ -1,5 +1,5 @@
 public class DeleteBookException extends Exception {
-  public DeleteBookException(String message) {
-    super(message);
+  public DeleteBookException() {
+    super("Book deletion error: Book wasn't found.");
   }
 }
