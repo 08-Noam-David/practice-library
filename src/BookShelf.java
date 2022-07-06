@@ -73,7 +73,9 @@ public class BookShelf implements Comparable<BookShelf> {
   }
 
   public void print() {
-    // TODO:
+    for (Book book : this.booksOnShelf) {
+      System.out.println(book);
+    }
   }
 
   @Override
