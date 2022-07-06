@@ -29,4 +29,7 @@ public abstract class Book implements Comparable<Book> {
   public int compareTo(Book other) {
     return this.name.compareTo(other.name);
   }
+
+  @Override
+  public abstract String toString();
 }
