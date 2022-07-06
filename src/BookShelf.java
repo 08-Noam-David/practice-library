@@ -13,23 +13,24 @@ public class BookShelf implements Comparable<BookShelf> {
   private ArrayList<Book> booksOnShelf;
 
   public BookShelf(int shelfID, ArrayList<Book> bookShelf) {
-    // TODO:
+    this.shelfId = shelfID;
+    this.booksOnShelf = bookShelf;
   }
 
   public int shelfId() {
-    // TODO:
+    return this.shelfId;
   }
 
   private ArrayList<Book> booksOnShelf() {
-    // TODO:
+    return this.booksOnShelf;
   }
 
   public void changeShelfId(int shelfId) {
-    // TODO:
+    this.shelfId = shelfId;
   }
 
   private void changeBooksOnShelf(ArrayList<Book> booksOnShelf) {
-    // TODO:
+    this.booksOnShelf = booksOnShelf;
   }
 
   public void addBook(Book newBook) {
