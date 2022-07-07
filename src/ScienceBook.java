@@ -1,11 +1,11 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ScienceBook extends Book {
   private int price;
-  private Date publishDate;
+  private LocalDate publishDate;
 
-  public ScienceBook(String name, int pages, int price, Date publishDate) {
+  public ScienceBook(String name, int pages, int price, LocalDate publishDate) {
     super(name, pages);
     this.price = price;
     this.publishDate = publishDate;
@@ -18,7 +18,7 @@ public class ScienceBook extends Book {
 
   @Override
   public String toString() {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     return String.format(
         "%s (science) - pub. %s, %dp., \u20AA%d",
         this.getName(), dateFormat.format(this.publishDate), this.getPages(), this.price);
@@ -28,11 +28,11 @@ public class ScienceBook extends Book {
     this.price = price;
   }
 
-  public Date getPublishDate() {
+  public LocalDate getPublishDate() {
     return publishDate;
   }
 
-  public void setPublishDate(Date publishDate) {
+  public void setPublishDate(LocalDate publishDate) {
     this.publishDate = publishDate;
   }
 }
