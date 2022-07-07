@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,33 +20,61 @@ public class Main {
 
     int choice = Integer.parseInt(scanner.nextLine());
 
-    // TODO: Get book details
+    String name, author;
+    int pages, price;
 
     switch (choice) {
-      case (SCIENCE):
+      case (SCIENCE) -> {
         System.out.println("Enter the book's name:");
-        String name = scanner.nextLine();
+        name = scanner.nextLine();
 
         System.out.println("Enter the amount of page the book has:");
-        int page = scanner.nextInt();
+        pages = scanner.nextInt();
 
-        // TODO: create new ScienceBook (and maybe get more details)
+        System.out.println("Enter the book's price (\u20AA):");
+        price = scanner.nextInt();
 
-        break;
-      case (MAGAZINE):
+        System.out.println("Enter the publication year of the book:");
+        int year = scanner.nextInt();
 
-        // TODO: create new Magazine (and maybe get more details)
+        System.out.println("Enter the publication month, as a number:");
+        int month = scanner.nextInt();
 
-        break;
-      case (READING):
+        System.out.println("Enter the publication day, as a number:");
+        int day = scanner.nextInt();
 
-        // TODO: create new ReadingBook (and maybe get more details)
+        LocalDate publishDate = LocalDate.of(year, month, day);
 
-        break;
+        bookToReturn = new ScienceBook(name, pages, price, publishDate);
+      }
+      case (MAGAZINE) -> {
+        System.out.println("Enter the book's name:");
+        name = scanner.nextLine();
 
-      default:
-        System.out.println("Wrong input");
-        break;
+        System.out.println("Enter the book's author:");
+        author = scanner.nextLine();
+
+        System.out.println("Enter the amount of page the book has:");
+        pages = scanner.nextInt();
+
+        System.out.println("Enter the book's price (\u20AA):");
+        price = scanner.nextInt();
+
+        bookToReturn = new MagazineBook(name, author, pages, price);
+      }
+      case (READING) -> {
+        System.out.println("Enter the book's name:");
+        name = scanner.nextLine();
+
+        System.out.println("Enter the book's author:");
+        author = scanner.nextLine();
+
+        System.out.println("Enter the amount of page the book has:");
+        pages = scanner.nextInt();
+
+        bookToReturn = new ReadingBook(name, author, pages);
+      }
+      default -> System.out.println("Wrong input");
     }
 
     return (bookToReturn);
