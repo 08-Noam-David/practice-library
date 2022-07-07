@@ -29,19 +29,19 @@ public class Main {
         name = scanner.nextLine();
 
         System.out.println("Enter the amount of page the book has:");
-        pages = scanner.nextInt();
+        pages = Integer.parseInt(scanner.nextLine());
 
         System.out.println("Enter the book's price (\u20AA):");
-        price = scanner.nextInt();
+        price = Integer.parseInt(scanner.nextLine());
 
         System.out.println("Enter the publication year of the book:");
-        int year = scanner.nextInt();
+        int year = Integer.parseInt(scanner.nextLine());
 
         System.out.println("Enter the publication month, as a number:");
-        int month = scanner.nextInt();
+        int month = Integer.parseInt(scanner.nextLine());
 
         System.out.println("Enter the publication day, as a number:");
-        int day = scanner.nextInt();
+        int day = Integer.parseInt(scanner.nextLine());
 
         LocalDate publishDate = LocalDate.of(year, month, day);
 
@@ -55,10 +55,10 @@ public class Main {
         author = scanner.nextLine();
 
         System.out.println("Enter the amount of page the book has:");
-        pages = scanner.nextInt();
+        pages = Integer.parseInt(scanner.nextLine());
 
         System.out.println("Enter the book's price (\u20AA):");
-        price = scanner.nextInt();
+        price = Integer.parseInt(scanner.nextLine());
 
         bookToReturn = new MagazineBook(name, author, pages, price);
       }
@@ -70,7 +70,7 @@ public class Main {
         author = scanner.nextLine();
 
         System.out.println("Enter the amount of page the book has:");
-        pages = scanner.nextInt();
+        pages = Integer.parseInt(scanner.nextLine());
 
         bookToReturn = new ReadingBook(name, author, pages);
       }
